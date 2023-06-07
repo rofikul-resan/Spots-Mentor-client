@@ -4,6 +4,7 @@ import Home from "../Page/Home/Home";
 import AddClass from "../Dashboard/Instructors/AddClass";
 import Login from "../Auth/Login";
 import AuthLayout from "../Layout/AuthLayout";
+import SingUp from "../Auth/SingUp";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login />,
+      },
+      {
+        path: "sing-up",
+        element: <SingUp />,
       },
     ],
   },
