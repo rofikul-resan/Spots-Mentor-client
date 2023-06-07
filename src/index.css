@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.nav-link {
+  @apply flex flex-col md:flex-row md:items-start justify-end;
+}
+
+.nav-link li a {
+  @apply text-lg uppercase font-semibold btn btn-ghost btn-block;
+}
