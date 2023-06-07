@@ -1,12 +1,17 @@
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import SocialLogin from "./SocialLogin";
 
 const Login = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
+
   const handleLogin = (data) => {
+    const { email, password } = data;
     console.log(data);
   };
   return (
@@ -39,11 +44,31 @@ const Login = () => {
           <p className="link link-hover text-red-600 ">Forget Password</p>
         </div>
         <div className="form-control mt-1">
-          <button type="submit" className="btn btn-block btn-primary mt-8">
+          <button
+            type="submit"
+            className="btn btn-block btn-primary mt-8 border-b-4 border-black border-0  "
+          >
             Log In
           </button>{" "}
         </div>
       </form>
+      <div>
+        <p className="mt-4">
+          Do not have an account ?{" "}
+          <Link
+            to={"/auth/sing-up"}
+            className="text-sm font-semibold text-orange-700 link link-hover"
+          >
+            Sing Up
+          </Link>{" "}
+        </p>
+      </div>
+      <div>
+        <div className="divider">OR</div>
+        <div>
+          <SocialLogin />
+        </div>
+      </div>
     </div>
   );
 };
