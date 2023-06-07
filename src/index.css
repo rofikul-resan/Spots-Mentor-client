@@ -9,3 +9,15 @@
 .nav-link li a {
   @apply text-lg uppercase font-semibold btn btn-ghost btn-block;
 }
+.btn-gardant-s {
+  border: 0;
+  background: #23074d; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #cc5333, #23074d);
+  background: linear-gradient(to right, #cc5333, #23074d);
+}
+.btn-gardant-h {
+  border: 0;
+  background: #23074d;
+  background: -webkit-linear-gradient(to right, #23074d #cc5333);
+  background: linear-gradient(to right, #23074d #cc5333);
+}
