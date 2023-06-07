@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 .nav-link {
-  @apply flex flex-col md:flex-row md:items-start justify-end;
+  @apply flex flex-col md:flex-row md:items-center justify-end px-4 md:px-0;
 }
 
 .nav-link li a {
-  @apply text-lg uppercase font-semibold btn btn-ghost btn-block;
+  @apply uppercase font-semibold btn btn-sm btn-ghost btn-block justify-start md:justify-center;
 }
 .btn-gardant-s {
   border: 0;

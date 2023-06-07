@@ -1,11 +1,12 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  const location = useLocation();
   return (
     <nav className=" shadow-md py-4">
       <div className="flex px-2 md:w-10/12 mx-auto justify-between items-center">
-        <div className=" flex items-center gap-1 w-fit ">
-          <img src="/logo.jpg" alt="" className="w-24 mx-auto" />
+        <div className=" md:flex items-center gap-1 w-fit ">
+          <img src="/logo.jpg" alt="" className="w-12 mx-auto" />
           <h1 className="text-2xl font-bold">Sports-Mentor</h1>
         </div>
         <div className="flex ">
@@ -13,9 +14,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 to={"/"}
-                className={({ isActive }) =>
-                  isActive ? "border-b border-orange-600" : ""
-                }
+                className={({ isActive }) => (isActive ? "btn-active" : "")}
               >
                 Home
               </NavLink>
@@ -50,9 +49,27 @@ const Navbar = () => {
                 Dashboard
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                to={"/add-class "}
+                className={({ isActive }) =>
+                  isActive ? "border-b border-orange-600" : ""
+                }
+              >
+                Add class
+              </NavLink>
+            </li>
           </ul>
           <div className="order-1 md:order-1">
-            <button className="btn btn-primary  ">Login</button>
+            {location.pathname === "/auth/login" ? (
+              <Link to={"/auth/sing-up"} className="btn btn-primary btn-sm ">
+                sing Up
+              </Link>
+            ) : (
+              <Link to={"/auth/login"} className="btn btn-primary btn-sm ">
+                Login
+              </Link>
+            )}
           </div>
         </div>
       </div>
