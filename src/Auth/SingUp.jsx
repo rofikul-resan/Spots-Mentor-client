@@ -40,12 +40,10 @@ const SingUp = () => {
     console.log(data);
     const formData = new FormData();
     formData.append("image", data.image[0]);
-    console.log(data.image[0]);
     if (password === confirmPass) {
       const url = `https://api.imgbb.com/1/upload?key=${
         import.meta.env.VITE_IMG_API
       }`;
-      console.log(url, formData);
       axios
         .post(url, formData)
         .then((res) => {
