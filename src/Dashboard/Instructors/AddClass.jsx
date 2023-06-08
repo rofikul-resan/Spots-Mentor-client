@@ -7,22 +7,26 @@ const AddClass = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
   } = useForm();
   return (
-    <form>
-      <div className="form-control w-full max-w-xs">
-        <label className="label">
-          <span className="label-text">Class Name</span>
-        </label>
-        <input
-          {...register("exampleRequired", { required: true })}
-          type="text"
-          placeholder="Type here"
-          className="input input-bordered w-full max-w-xs"
-        />
+    <div>
+      <div className="my-8">
+        <h1 className="text-3xl font-bold text-center">Add Your New Class</h1>
       </div>
-    </form>
+      <form onSubmit={handleSubmit}>
+        <div className="form-control w-full max-w-xs">
+          <label className="label">
+            <span className="label-text">Class Name</span>
+          </label>
+          <input
+            {...register("exampleRequired", { required: true })}
+            type="text"
+            placeholder="Type here"
+            className="input input-bordered w-full max-w-xs"
+          />
+        </div>
+      </form>
+    </div>
   );
 };
 

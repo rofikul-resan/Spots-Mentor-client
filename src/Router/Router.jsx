@@ -5,6 +5,7 @@ import AddClass from "../Dashboard/Instructors/AddClass";
 import Login from "../Auth/Login";
 import AuthLayout from "../Layout/AuthLayout";
 import SingUp from "../Auth/SingUp";
+import DashBoardLayout from "../Layout/DashBoardLayout";
 
 const router = createBrowserRouter([
   {
@@ -18,8 +19,14 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/add-class",
-    element: <AddClass />,
+    path: "/dashboard",
+    element: <DashBoardLayout />,
+    children: [
+      {
+        path: "add-class",
+        element: <AddClass />,
+      },
+    ],
   },
   {
     path: "/auth",
