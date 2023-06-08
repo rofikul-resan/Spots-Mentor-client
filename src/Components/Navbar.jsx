@@ -14,7 +14,7 @@ const Navbar = () => {
           <h1 className="text-2xl font-bold">Sports-Mentor</h1>
         </div>
         <div className="flex ">
-          <ul className="nav-link absolute md:static w-full md:w-fit left-0 top-[95px] bg-white ">
+          <ul className="nav-link absolute md:static w-full md:w-fit left-0 top-[95px]  ">
             <li>
               <NavLink
                 to={"/"}

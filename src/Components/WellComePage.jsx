@@ -2,7 +2,7 @@ import { useContext } from "react";
 import animation from "/src/assets/36621-sports-app-loading-indicator";
 import Lottie from "lottie-react";
 import { AuthContext } from "../Provider/AuthProvider";
-import { Fade, Slide } from "react-awesome-reveal";
+import { Fade } from "react-awesome-reveal";
 
 const WellComePage = ({ children }) => {
   const { initLoading } = useContext(AuthContext);

@@ -5,6 +5,7 @@ import "swiper/css/effect-cube";
 import "swiper/css/pagination";
 // import required modules
 import { Autoplay, EffectCube, Pagination } from "swiper";
+import { Fade } from "react-awesome-reveal";
 
 const HomeBanner = () => {
   const imgBanner = [
@@ -26,7 +27,7 @@ const HomeBanner = () => {
           shadowScale: 0.94,
         }}
         autoplay={{
-          delay: 3000,
+          delay: 4000,
           disableOnInteraction: false,
         }}
         pagination={true}
@@ -39,9 +40,11 @@ const HomeBanner = () => {
               <img src={img} alt="" className="w-full " />
               <div className="absolute inset-0 bg-gradient-to-l to-black/75 from-black/10 flex items-center">
                 <div className=" ml-12">
-                  <h1 className="text-white text-5xl font-bold animate-pulse ">
-                    Welcome to <br /> Our Summer Camp <br /> Sports Course
-                  </h1>
+                  <Fade delay={1e3} damping={1e-1}>
+                    <h1 className="text-white text-5xl font-bold ">
+                      Welcome to <br /> Our Summer Camp <br /> Sports Course
+                    </h1>
+                  </Fade>
                   <p className="text-sm text-white w-2/6 mt-4">
                     Explore Camps at the Institute of Science give inquisitive
                     campers the chance to collaboratively tackle activities,
@@ -52,7 +55,7 @@ const HomeBanner = () => {
                     impact on the next generation of science enthusiasts.
                   </p>
                   <button className="btn btn-outline btn-gardant-s hover:btn-gardant-h delay-200 rounded-none mt-4 text-white border-white">
-                    Enroll Now
+                    View Details
                   </button>
                 </div>
               </div>

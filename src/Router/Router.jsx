@@ -6,6 +6,7 @@ import Login from "../Auth/Login";
 import AuthLayout from "../Layout/AuthLayout";
 import SingUp from "../Auth/SingUp";
 import DashBoardLayout from "../Layout/DashBoardLayout";
+import ManageUser from "../Dashboard/Admin/ManageUsers/ManageUser";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: <DashBoardLayout />,
     children: [
+      {
+        path: "manage-user",
+        element: <ManageUser />,
+      },
       {
         path: "add-class",
         element: <AddClass />,

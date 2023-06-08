@@ -2,9 +2,10 @@ import { AiFillHome } from "react-icons/ai";
 import { GiBookCover, GiTeacher } from "react-icons/gi";
 import { Link, Outlet } from "react-router-dom";
 import InstructorLInk from "../Dashboard/Instructors/InstructorLInk";
+import AdminLink from "../Dashboard/Admin/AdminLink";
 
 const DashBoardLayout = () => {
-  const roll = "instructors";
+  const roll = "admin";
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -37,7 +38,10 @@ const DashBoardLayout = () => {
             {roll === "student" ? (
               <>student Link</>
             ) : (
-              <>{roll === "instructors" && <InstructorLInk />}</>
+              <>
+                {roll === "instructors" && <InstructorLInk />}
+                {roll === "admin" && <AdminLink />}
+              </>
             )}
             <div className="divider"></div>
             <li>

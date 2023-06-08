@@ -46,6 +46,7 @@ const AuthProvider = ({ children }) => {
         const res = await axios.post("http://localhost:5000/add-users", {
           name: currentUser.displayName,
           email: currentUser.email,
+          photo: currentUser.photoURL,
           roll: "student",
         });
 

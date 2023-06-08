@@ -11,13 +11,13 @@
 }
 .btn-gardant-s {
   border: 0;
-  background: #23074d; /* fallback for old browsers */
+  /* background: #23074d; fallback for old browsers */
   background: -webkit-linear-gradient(to right, #cc5333, #23074d);
   background: linear-gradient(to right, #cc5333, #23074d);
 }
-.btn-gardant-h {
+.btn-gardant-s:hover {
   border: 0;
-  background: #23074d;
-  background: -webkit-linear-gradient(to right, #23074d #cc5333);
-  background: linear-gradient(to right, #23074d #cc5333);
+  /* background: #23074d; */
+  background: -webkit-linear-gradient(#23074d #cc5333);
+  background: linear-gradient(#23074d #cc5333);
 }
