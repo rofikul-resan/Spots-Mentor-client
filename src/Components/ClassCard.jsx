@@ -1,4 +1,3 @@
-import Aos from "aos";
 import AOS from "aos";
 import "aos/dist/aos.css";
 AOS.init();
@@ -27,7 +26,7 @@ const ClassCard = ({ classes }) => {
             <div className="flex justify-between">
               <p>
                 <span className="font-semibold italic">Total Student : </span>
-                {classes?.enrollStudent}{" "}
+                {classes?.enrollStudentId.length}{" "}
               </p>
               <p>
                 <span className="font-semibold italic">Total Seats : </span>
@@ -36,12 +35,12 @@ const ClassCard = ({ classes }) => {
             </div>
             <p>
               <span className="font-semibold italic">Available Seats : </span>
-              {classes?.availableSeats - classes?.enrollStudent}{" "}
+              {classes?.availableSeats - classes?.enrollStudentId.length}{" "}
             </p>
           </div>
           <div className="card-actions justify-end">
             <button className="btn btn-gardant-s text-white rounded-sm">
-              Enroll Now
+              Book Now
             </button>
           </div>
         </div>

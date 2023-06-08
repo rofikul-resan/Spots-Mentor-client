@@ -3,6 +3,7 @@ import animation from "/src/assets/36621-sports-app-loading-indicator";
 import Lottie from "lottie-react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { Fade } from "react-awesome-reveal";
+import { Typewriter } from "react-simple-typewriter";
 
 const WellComePage = ({ children }) => {
   const { initLoading } = useContext(AuthContext);
@@ -16,6 +17,14 @@ const WellComePage = ({ children }) => {
           </h1>
           <Fade delay={1e3} cascade damping={1e-1}>
             <h4 className="text-3xl font-semibold">
+              <Typewriter
+                words={["Enjoy your Summer Vacation"]}
+                loop={5}
+                cursor
+                cursorStyle="_"
+                typeSpeed={70}
+                deleteSpeed={50}
+              />
               Enjoy your Summer Vacation
             </h4>
           </Fade>
