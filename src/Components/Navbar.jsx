@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Navbar = () => {
   const location = useLocation();
+  const { user, logout } = useContext(AuthContext);
+  console.log(user);
   return (
     <nav className=" shadow-md py-4">
       <div className="flex px-2 md:w-10/12 mx-auto justify-between items-center">
@@ -61,14 +65,49 @@ const Navbar = () => {
             </li>
           </ul>
           <div className="order-1 md:order-1">
-            {location.pathname === "/auth/login" ? (
-              <Link to={"/auth/sing-up"} className="btn btn-primary btn-sm ">
-                sing Up
-              </Link>
+            {user ? (
+              <>
+                <div className="dropdown dropdown-end">
+                  <label
+                    tabIndex={0}
+                    className="btn btn-ghost btn-circle avatar"
+                  >
+                    <div className="w-10 rounded-full">
+                      <img src={user?.photoURL} />
+                    </div>
+                  </label>
+                  <ul
+                    tabIndex={0}
+                    className="mt-3 p-2 shadow z-10 menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+                  >
+                    <li>
+                      <a>{user.displayName}</a>
+                    </li>
+
+                    <li>
+                      <a>Settings</a>
+                    </li>
+                    <li>
+                      <a onClick={() => logout().then(() => {})}>Logout</a>
+                    </li>
+                  </ul>
+                </div>
+              </>
             ) : (
-              <Link to={"/auth/login"} className="btn btn-primary btn-sm ">
-                Login
-              </Link>
+              <div>
+                {location.pathname === "/auth/login" ? (
+                  <Link
+                    to={"/auth/sing-up"}
+                    className="btn btn-primary btn-sm "
+                  >
+                    sing Up
+                  </Link>
+                ) : (
+                  <Link to={"/auth/login"} className="btn btn-primary btn-sm ">
+                    Login
+                  </Link>
+                )}
+              </div>
             )}
           </div>
         </div>

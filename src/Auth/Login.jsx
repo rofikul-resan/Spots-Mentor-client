@@ -1,8 +1,16 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "./SocialLogin";
+import { useContext, useState } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
+import Swal from "sweetalert2";
+import { FidgetSpinner } from "react-loader-spinner";
 
 const Login = () => {
+  const { login } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -11,8 +19,19 @@ const Login = () => {
   } = useForm();
 
   const handleLogin = (data) => {
+    setLoading(true);
     const { email, password } = data;
-    console.log(data);
+    login(email, password).then(() => {
+      reset();
+      Swal.fire({
+        icon: "success",
+        title: "Login Successful",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      navigate("/");
+      setLoading(false);
+    });
   };
   return (
     <div className="rounded-2xl shadow-xl shadow-black/50 p-10 w-9/12 mx-auto bg-base-200">
@@ -46,10 +65,20 @@ const Login = () => {
         <div className="form-control mt-1">
           <button
             type="submit"
-            className="btn btn-block btn-primary mt-8 border-b-4 border-black border-0  "
+            className="btn btn-block btn-primary mt-8 border-b-4 border-black border-0 gap-1 "
           >
             Log In
-          </button>{" "}
+            {loading && (
+              <FidgetSpinner
+                visible={true}
+                height={"20"}
+                ariaLabel="dna-loading"
+                wrapperStyle={{}}
+                wrapperClass="dna-wrapper"
+                backgroundColor="#fff"
+              />
+            )}
+          </button>
         </div>
       </form>
       <div>

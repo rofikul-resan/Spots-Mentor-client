@@ -3,6 +3,7 @@ import {
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signOut,
   updateProfile,
 } from "firebase/auth";
 import firebaseApp from "../Firebase/firebase";
@@ -25,6 +26,10 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
+  const logout = () => {
+    setLoading(true);
+    return signOut(auth);
+  };
 
   const updateUser = (name, photo) => {
     return updateProfile(auth.currentUser, {
@@ -34,23 +39,21 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const updateUser = onAuthStateChanged(auth, (currentUser) => {
+    const updateUser = onAuthStateChanged(auth, async (currentUser) => {
       setInitLoading(false);
       setUser(currentUser);
       if (currentUser) {
-        axios
-          .post("http://localhost:5000/add-users", {
-            name: currentUser.displayName,
-            email: currentUser.email,
-            roll: "student",
-          })
-          .then((res) => {
-            if (res.data.insertId > 0) {
-              console.log(res.data);
-              setLoading(false);
-            }
-          });
+        const res = await axios.post("http://localhost:5000/add-users", {
+          name: currentUser.displayName,
+          email: currentUser.email,
+          roll: "student",
+        });
+
+        if (res.data.insertId > 0) {
+          console.log(res.data);
+        }
       }
+      setLoading(false);
     });
 
     return () => updateUser();
@@ -63,6 +66,7 @@ const AuthProvider = ({ children }) => {
     createUser,
     login,
     updateUser,
+    logout,
   };
   return (
     <AuthContext.Provider value={authValue}>{children}</AuthContext.Provider>

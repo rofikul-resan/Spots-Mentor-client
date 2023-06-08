@@ -42,7 +42,7 @@ const SingUp = () => {
     formData.append("image", data.image[0]);
     console.log(data.image[0]);
     if (password === confirmPass) {
-      const url = `https://api.imgbb.com/1/upload?expiration=600&key=${
+      const url = `https://api.imgbb.com/1/upload?key=${
         import.meta.env.VITE_IMG_API
       }`;
       console.log(url, formData);
@@ -54,6 +54,7 @@ const SingUp = () => {
             .then(() => {
               updateUser(name, image)
                 .then(() => {
+                  reset();
                   Swal.fire({
                     icon: "success",
                     title: "Sing Up Successful",
