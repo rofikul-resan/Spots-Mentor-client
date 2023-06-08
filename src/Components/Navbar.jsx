@@ -53,16 +53,6 @@ const Navbar = () => {
                 Dashboard
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                to={"/add-class "}
-                className={({ isActive }) =>
-                  isActive ? "border-b border-orange-600" : ""
-                }
-              >
-                Add class
-              </NavLink>
-            </li>
           </ul>
           <div className="order-1 md:order-1">
             {user ? (
