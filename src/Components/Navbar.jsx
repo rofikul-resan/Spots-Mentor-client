@@ -5,7 +5,6 @@ import { AuthContext } from "../Provider/AuthProvider";
 const Navbar = () => {
   const location = useLocation();
   const { user, logout } = useContext(AuthContext);
-  console.log(user);
   return (
     <nav className=" shadow-md py-4">
       <div className="flex px-2 md:w-10/12 mx-auto justify-between items-center">

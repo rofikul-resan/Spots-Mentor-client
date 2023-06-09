@@ -51,7 +51,17 @@ const SingUp = () => {
           createUser(email, password)
             .then(() => {
               updateUser(name, image)
-                .then(() => {
+                .then(async () => {
+                  const res = await axios.post(
+                    "http://localhost:5000/add-users",
+                    {
+                      name: name,
+                      email: email,
+                      photo: image,
+                      roll: "student",
+                    }
+                  );
+                  console.log(res);
                   reset();
                   Swal.fire({
                     icon: "success",

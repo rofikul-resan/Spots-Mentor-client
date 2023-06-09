@@ -49,10 +49,17 @@ const AuthProvider = ({ children }) => {
           photo: currentUser.photoURL,
           roll: "student",
         });
-
         if (res.data.insertId > 0) {
           console.log(res.data);
         }
+        const token = await axios.post("http://localhost:5000/jwt", {
+          email: currentUser.email,
+        });
+        if (token.data.token) {
+          localStorage.setItem("token", token.data.token);
+        }
+      } else {
+        localStorage.removeItem("token");
       }
       setLoading(false);
     });
