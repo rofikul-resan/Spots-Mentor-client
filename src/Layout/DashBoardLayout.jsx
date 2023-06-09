@@ -3,9 +3,12 @@ import { GiBookCover, GiTeacher } from "react-icons/gi";
 import { Link, Outlet } from "react-router-dom";
 import InstructorLInk from "../Dashboard/Instructors/InstructorLInk";
 import AdminLink from "../Dashboard/Admin/AdminLink";
+import useUserRoll from "../Hook/useUserRoll";
 
 const DashBoardLayout = () => {
-  const roll = "admin";
+  const { userRoll } = useUserRoll();
+  console.log(userRoll);
+  const roll = userRoll.roll;
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -39,7 +42,7 @@ const DashBoardLayout = () => {
               <>student Link</>
             ) : (
               <>
-                {roll === "instructors" && <InstructorLInk />}
+                {roll === "instructor" && <InstructorLInk />}
                 {roll === "admin" && <AdminLink />}
               </>
             )}
