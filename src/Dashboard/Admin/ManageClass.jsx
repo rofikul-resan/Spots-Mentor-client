@@ -7,14 +7,15 @@ const ManageClass = () => {
   const { axiosSecure } = useAxiosSecure();
   const { allClass, refetch } = useAllClass();
   const changeStatus = async (status, id) => {
-    const res = await axiosSecure.patch(`http://localhost:5000/users/${id}`, {
+    const res = await axiosSecure.patch(`http://localhost:5000/classes/${id}`, {
       status: status,
     });
+    console.log(res.data);
     if (res.data.modifiedCount > 0) {
       refetch();
       Swal.fire({
         icon: "success",
-        title: `Class  ${roll} Successful `,
+        title: `Class  ${status} Successful `,
       });
     }
   };
@@ -23,7 +24,7 @@ const ManageClass = () => {
       <SectionHeader title={"Manage Class"} />
 
       <div>
-        <div className="overflow-x-auto w-9/12 mx-auto rounded-md">
+        <div className="overflow-x-auto w-11/12 mx-auto rounded-md">
           <h1 className="text-xl font-bold my-3 ms-1">
             {" "}
             Total cls : {allClass.length}
@@ -35,6 +36,8 @@ const ManageClass = () => {
                 <th className="bg-orange-600 text-white">No.</th>
                 <th className="bg-orange-600 text-white">Name</th>
                 <th className="bg-orange-600 text-white"> Inst. Email</th>
+                <th className="bg-orange-600 text-white"> Price</th>
+                <th className="bg-orange-600 text-white"> Status</th>
                 <th className="bg-orange-600 text-white">Action</th>
                 <th className="bg-orange-600 text-white">Deny </th>
               </tr>
@@ -47,6 +50,8 @@ const ManageClass = () => {
 
                   <td>{cls.className}</td>
                   <td>{cls.email}</td>
+                  <td>$ {cls.price}</td>
+                  <td>{cls.status}</td>
                   <th>
                     <button
                       onClick={() => changeStatus("approved", cls._id)}
