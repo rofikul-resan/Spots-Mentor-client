@@ -4,6 +4,7 @@ import { Link, Outlet } from "react-router-dom";
 import InstructorLInk from "../Dashboard/Instructors/InstructorLInk";
 import AdminLink from "../Dashboard/Admin/AdminLink";
 import useUserRoll from "../Hook/useUserRoll";
+import StudentLink from "../Dashboard/Student/StudentLink";
 
 const DashBoardLayout = () => {
   const { userRoll } = useUserRoll();
@@ -26,7 +27,7 @@ const DashBoardLayout = () => {
           <Outlet />
         </div>
       </div>
-      <div className="drawer-side" data-theme="dark">
+      <div className="drawer-side bg-base-300" data-theme="dark">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <div className=" text-center my-10 mx-auto">
           <img src="/logo.jpg" alt="" className="w-12 mx-auto" />
@@ -39,7 +40,7 @@ const DashBoardLayout = () => {
           <ul className="menu p-4 w-80 h-full ">
             {/* Sidebar content here */}
             {roll === "student" ? (
-              <>student Link</>
+              <StudentLink />
             ) : (
               <>
                 {roll === "instructor" && <InstructorLInk />}
@@ -53,12 +54,12 @@ const DashBoardLayout = () => {
               </Link>
             </li>
             <li>
-              <Link to={"/"} className="text-white text-xl">
+              <Link to={"/instructors"} className="text-white text-xl">
                 <GiTeacher className="text-white text-2xl" /> Instructors
               </Link>
             </li>
             <li>
-              <Link to={"/"} className="text-white text-xl">
+              <Link to={"/class"} className="text-white text-xl">
                 <GiBookCover className="text-white text-2xl" /> Class
               </Link>
             </li>
