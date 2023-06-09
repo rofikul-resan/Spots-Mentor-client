@@ -5,12 +5,12 @@ AOS.init();
 const ClassCard = ({ classes }) => {
   return (
     <div data-aos="flip-left">
-      <div className="card bg-base-100 h-full shadow-xl">
+      <div className="card bg-base-100 h-full shadow-xl duration-150 hover:-translate-y-3 ">
         <figure className="h-64 overflow-hidden">
           <img
             src={classes?.classImg}
             alt={classes?.className}
-            className="h-full"
+            className="h-full w-full"
           />
         </figure>
         <div className="card-body">
@@ -36,7 +36,7 @@ const ClassCard = ({ classes }) => {
             </div>
             <p>
               <span className="font-semibold italic">Available Seats : </span>
-              {classes?.availableSeats - classes?.enrollStudentId.length}{" "}
+              {classes?.availableSeats - classes?.enrollStudentId?.length}{" "}
             </p>
           </div>
           <div className="flex items-center">

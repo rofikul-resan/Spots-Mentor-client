@@ -9,7 +9,7 @@ const InstructorCard = ({ instructor }) => {
           <img
             src={instructor?.photo}
             alt={instructor?.name}
-            className="h-full"
+            className="h-full w-full"
           />
         </figure>
         <div className="card-body justify-between">
@@ -24,7 +24,7 @@ const InstructorCard = ({ instructor }) => {
             <div className="flex justify-between">
               <p>
                 <span className="font-semibold italic">Total class : </span>
-                {instructor?.allClass.length}{" "}
+                {instructor?.allClass?.length}{" "}
               </p>
             </div>
           </div>
