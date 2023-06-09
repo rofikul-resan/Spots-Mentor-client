@@ -1,18 +1,17 @@
-import moment from "moment/moment";
 import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Provider/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { FidgetSpinner } from "react-loader-spinner";
+import useAxiosSecure from "../../Hook/useAxiosSecure";
 
 const AddClass = () => {
+  const { axiosSecure } = useAxiosSecure();
   const [loading, setLoading] = useState(false);
   const [instructor, setInstructor] = useState({});
   const { user } = useContext(AuthContext);
-  useEffect(() => {
-    setInstructor(user);
-  }, [user]);
+
   const postTime = new Date().getTime();
   const {
     register,
@@ -20,12 +19,12 @@ const AddClass = () => {
     formState: { errors },
     reset,
   } = useForm();
-  const validateFile = (file) => {
-    console.log(file[0].type);
-    if (!file) {
-      return "File is required.";
-    }
 
+  useEffect(() => {
+    setInstructor(user);
+  }, [user]);
+
+  const validateFile = (file) => {
     if (!file[0].type.includes("image")) {
       return "Only image files are allowed.";
     }
@@ -33,25 +32,22 @@ const AddClass = () => {
     if (file[0].size > 2 * 1024 * 1024) {
       return "File size must be less than 2MB.";
     }
-
-    return true;
   };
 
   const handleAddClass = (data) => {
     setLoading(true);
-    const { className, instructorName, email, price, availableSeats } = data;
+    const { className, price, availableSeats } = data;
     const url = `https://api.imgbb.com/1/upload?key=${
       import.meta.env.VITE_IMG_API
     }`;
     const formData = new FormData();
     formData.append("image", data.image[0]);
-    console.log(formData);
     axios.post(url, formData).then((res) => {
       const classImg = res.data.data.display_url;
       const classData = {
         className,
-        instructorName,
-        email,
+        instructorName: instructor.displayName,
+        email: instructor.email,
         price: +price,
         availableSeats: +availableSeats,
         classImg,
@@ -59,17 +55,19 @@ const AddClass = () => {
         enrollStudent: 0,
         enrollStudentId: [],
       };
-      console.log(classData);
-      axios.post("http://localhost:5000/add-class", classData).then((res) => {
-        if (res.data.insertedId) {
-          Swal.fire({
-            icon: "success",
-            title: "Class Add Successful",
-          });
-          reset();
-          setLoading(false);
-        }
-      });
+      axiosSecure
+        .post("http://localhost:5000/add-class", classData)
+        .then((res) => {
+          console.log(res.data);
+          if (res.data.result.insertedId) {
+            Swal.fire({
+              icon: "success",
+              title: "Class Add Successful",
+            });
+            reset();
+            setLoading(false);
+          }
+        });
     });
   };
   return (
@@ -115,7 +113,7 @@ const AddClass = () => {
               </span>
             </label>
             <input
-              {...register("instructorName", { required: true })}
+              {...register("instructorName")}
               type="text"
               defaultValue={instructor?.displayName}
               placeholder="Type here"
@@ -130,7 +128,7 @@ const AddClass = () => {
               </span>
             </label>
             <input
-              {...register("email", { required: true })}
+              {...register("email")}
               type="email"
               defaultValue={instructor?.email}
               placeholder="Type here"
@@ -175,7 +173,6 @@ const AddClass = () => {
               visible={true}
               height={"20"}
               ariaLabel="dna-loading"
-              wrapperStyle={{}}
               wrapperClass="dna-wrapper"
               backgroundColor="#fff"
             />
