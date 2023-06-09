@@ -54,6 +54,7 @@ const AddClass = () => {
         postTime: +postTime,
         enrollStudent: 0,
         enrollStudentId: [],
+        status: "pending",
       };
       axiosSecure
         .post("http://localhost:5000/add-class", classData)

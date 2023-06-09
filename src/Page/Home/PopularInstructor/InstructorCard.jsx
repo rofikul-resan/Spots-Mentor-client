@@ -18,6 +18,10 @@ const InstructorCard = ({ instructor }) => {
           </h2>
           <div>
             <p>
+              <span className="font-semibold italic">Email: </span>
+              {instructor?.email}{" "}
+            </p>
+            <p>
               <span className="font-semibold italic">Total Student: </span>
               {instructor?.allStudent}{" "}
             </p>
@@ -30,7 +34,7 @@ const InstructorCard = ({ instructor }) => {
           </div>
           <div className="card-actions justify-end">
             <button className="btn btn-gardant-s text-white rounded-sm">
-              View Details
+              See Classes
             </button>
           </div>
         </div>

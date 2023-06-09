@@ -27,7 +27,7 @@ const ClassCard = ({ classes }) => {
             <div className="flex justify-between">
               <p>
                 <span className="font-semibold italic">Total Student : </span>
-                {classes?.enrollStudentId.length}{" "}
+                {classes?.enrollStudentId?.length}{" "}
               </p>
               <p>
                 <span className="font-semibold italic">Total Seats : </span>
