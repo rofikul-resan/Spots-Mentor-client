@@ -1,5 +1,6 @@
 import AOS from "aos";
 import "aos/dist/aos.css";
+import moment from "moment/moment";
 AOS.init();
 const ClassCard = ({ classes }) => {
   return (
@@ -38,10 +39,13 @@ const ClassCard = ({ classes }) => {
               {classes?.availableSeats - classes?.enrollStudentId.length}{" "}
             </p>
           </div>
-          <div className="card-actions justify-end">
-            <button className="btn btn-gardant-s text-white rounded-sm">
-              Book Now
-            </button>
+          <div className="flex items-center">
+            <p>{moment(classes?.postTime).fromNow()}</p>
+            <div className="card-actions justify-end">
+              <button className="btn btn-gardant-s text-white rounded-sm">
+                Book Now
+              </button>
+            </div>
           </div>
         </div>
       </div>

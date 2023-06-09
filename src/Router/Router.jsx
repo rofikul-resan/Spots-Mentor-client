@@ -7,6 +7,7 @@ import AuthLayout from "../Layout/AuthLayout";
 import SingUp from "../Auth/SingUp";
 import DashBoardLayout from "../Layout/DashBoardLayout";
 import ManageUser from "../Dashboard/Admin/ManageUsers/ManageUser";
+import InstructorPage from "../Page/InstructorPage/InstructorPage";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/instructors",
+        element: <InstructorPage />,
       },
     ],
   },
