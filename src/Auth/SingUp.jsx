@@ -4,12 +4,16 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
-import { FidgetSpinner, LineWave } from "react-loader-spinner";
+import { FidgetSpinner } from "react-loader-spinner";
 import Swal from "sweetalert2";
+import { ImEye, ImEyeBlocked } from "react-icons/im";
 
 const SingUp = () => {
   const { createUser, updateUser } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
+  const [isShow, setIsShow] = useState(false);
+  const [isShowC, setIsShowC] = useState(false);
+
   const navigate = useNavigate();
   const {
     register,
@@ -78,6 +82,13 @@ const SingUp = () => {
         })
         .catch((err) => {
           console.log(err);
+          setLoading(false);
+          Swal.fire({
+            icon: "warning",
+            title: err.message,
+            showConfirmButton: false,
+            timer: 1500,
+          });
         });
     }
   };
@@ -107,18 +118,32 @@ const SingUp = () => {
             className="input input-bordered"
           />
         </div>
-        <div className="form-control">
+        <div className="form-control relative">
+          <button
+            type="button"
+            onClick={() => setIsShow(!isShow)}
+            className="text-xl absolute bottom-3 right-3"
+          >
+            {isShow ? <ImEye /> : <ImEyeBlocked />}
+          </button>
           <label className="label">
             <span className="text-lg font-semibold italic">Password</span>
           </label>
           <input
             {...register("password", { required: true })}
-            type="password"
+            type={isShow ? "text" : "password"}
             placeholder="Your Password"
             className="input input-bordered"
           />
         </div>
-        <div className="form-control">
+        <div className="form-control relative">
+          <button
+            type="button"
+            onClick={() => setIsShowC(!isShowC)}
+            className="text-xl absolute bottom-3 right-3"
+          >
+            {isShowC ? <ImEye /> : <ImEyeBlocked />}
+          </button>
           <label className="label">
             <span className="text-lg font-semibold italic">
               Confirm Password
@@ -126,7 +151,7 @@ const SingUp = () => {
           </label>
           <input
             {...register("confirmPass", { required: true })}
-            type="password"
+            type={isShow ? "text" : "password"}
             placeholder="Confirm  Password"
             className="input input-bordered"
           />

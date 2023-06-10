@@ -5,10 +5,12 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { FidgetSpinner } from "react-loader-spinner";
+import { ImEye, ImEyeBlocked } from "react-icons/im";
 
 const Login = () => {
   const { login } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
+  const [isShow, setIsShow] = useState(false);
   const navigate = useNavigate();
 
   const {
@@ -21,18 +23,30 @@ const Login = () => {
   const handleLogin = (data) => {
     setLoading(true);
     const { email, password } = data;
-    login(email, password).then(() => {
-      reset();
-      Swal.fire({
-        icon: "success",
-        title: "Login Successful",
-        showConfirmButton: false,
-        timer: 1500,
+    login(email, password)
+      .then(() => {
+        reset();
+        Swal.fire({
+          icon: "success",
+          title: "Login Successful",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/");
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+        Swal.fire({
+          icon: "warning",
+          title: err.message,
+          showConfirmButton: false,
+          timer: 1500,
+        });
       });
-      navigate("/");
-      setLoading(false);
-    });
   };
+
   return (
     <div className="rounded-2xl shadow-xl shadow-black/50 p-10 w-9/12 mx-auto bg-base-200">
       <h1 className="text-4xl text-center font-semibold mb-6">Login !</h1>
@@ -48,13 +62,20 @@ const Login = () => {
             className="input input-bordered"
           />
         </div>
-        <div className="form-control">
+        <div className="form-control relative">
+          <button
+            type="button"
+            onClick={() => setIsShow(!isShow)}
+            className="text-xl absolute bottom-3 right-3"
+          >
+            {isShow ? <ImEye /> : <ImEyeBlocked />}
+          </button>
           <label className="label">
             <span className="text-lg font-semibold italic">Password</span>
           </label>
           <input
             {...register("password", { required: true })}
-            type="text"
+            type={isShow ? "text" : "password"}
             placeholder="Your Password"
             className="input input-bordered"
           />
