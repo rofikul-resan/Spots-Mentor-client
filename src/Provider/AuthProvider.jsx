@@ -43,15 +43,6 @@ const AuthProvider = ({ children }) => {
       setInitLoading(false);
       setUser(currentUser);
       if (currentUser) {
-        const res = await axios.post("http://localhost:5000/add-users", {
-          name: currentUser.displayName,
-          email: currentUser.email,
-          photo: currentUser.photoURL,
-          roll: "student",
-        });
-        if (res.data.insertId > 0) {
-          console.log(res.data);
-        }
         const token = await axios.post("http://localhost:5000/jwt", {
           email: currentUser.email,
         });

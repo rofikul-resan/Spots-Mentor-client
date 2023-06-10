@@ -78,7 +78,16 @@ const SingUp = () => {
                 })
                 .catch((err) => console.log(err));
             })
-            .catch((err) => console.log(err));
+            .catch((err) => {
+              console.log(err);
+              setLoading(false);
+              Swal.fire({
+                icon: "warning",
+                title: err.message,
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            });
         })
         .catch((err) => {
           console.log(err);
