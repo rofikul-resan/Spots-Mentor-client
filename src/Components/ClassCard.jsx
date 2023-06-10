@@ -8,8 +8,10 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../Hook/useAxiosSecure";
 import { Bars } from "react-loader-spinner";
 import useUserRoll from "../Hook/useUserRoll";
+import useAllClass from "../Hook/useAllClass";
 AOS.init();
 const ClassCard = ({ classes }) => {
+  const { refetch } = useAllClass();
   const [loading, setLoading] = useState(false);
   const { userRoll } = useUserRoll();
   const { axiosSecure } = useAxiosSecure();
@@ -39,6 +41,7 @@ const ClassCard = ({ classes }) => {
       );
       setLoading(false);
       if (res.data.insertedId) {
+        refetch();
         Swal.fire({
           icon: "success",
           title: "Booking done",
