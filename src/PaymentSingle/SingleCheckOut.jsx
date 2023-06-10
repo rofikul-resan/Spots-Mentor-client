@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import useBookingList from "../Hook/useBookingList";
 import useEnrollClass from "../Hook/useEnrollClass";
 
-const CheckOut = ({ price, bookingClass }) => {
+const SingleCheckOut = ({ price, product }) => {
   const [cardError, setCardError] = useState(null);
   const [clientSecret, setClientSecret] = useState("");
   const [transactionId, setTransactionId] = useState("");
@@ -72,11 +72,11 @@ const CheckOut = ({ price, bookingClass }) => {
         paymentTime: new Date().getTime(),
         email: user.email,
         amount: price,
-        quantity: bookingClass.length,
-        allBookingId: bookingClass.map((cls) => cls._id),
-        allClassNames: bookingClass.map((cls) => cls.className),
-        allClassId: bookingClass.map((cls) => cls.classId),
-        instructorEmails: bookingClass.map((cls) => cls.instructorEmail),
+        quantity: 1,
+        allBookingId: [product._id],
+        allClassNames: [product.className],
+        allClassId: [product.classId],
+        instructorEmails: [product.instructorEmail],
       };
       console.log(paymentHistory);
       axiosSecure
@@ -147,4 +147,4 @@ const CheckOut = ({ price, bookingClass }) => {
   );
 };
 
-export default CheckOut;
+export default SingleCheckOut;

@@ -10,7 +10,7 @@ const BookingClass = () => {
       <SectionHeader title={"Your Booking Class"} />
 
       <div>
-        <div className="overflow-x-auto w-9/12 mx-auto rounded-md">
+        <div className="overflow-x-auto px-5 mx-auto rounded-md">
           <div className="flex justify-between items-center">
             <h1 className="text-xl font-bold my-3 ms-1">
               Total Booking : {bookingClass.length}
@@ -22,7 +22,7 @@ const BookingClass = () => {
               to={"/dashboard/payment"}
               className="btn btn-xs hover:bg-orange-800 px-8 w-fit bg-orange-600 text-white"
             >
-              Pay
+              Pay all
             </Link>
           </div>
           <table className="table table-zebra rounded-md overflow-hidden">
@@ -33,6 +33,8 @@ const BookingClass = () => {
                 <th className="bg-orange-600 text-white">class Name</th>
                 <th className="bg-orange-600 text-white">Price</th>
                 <th className="bg-orange-600 text-white">Instructor Email</th>
+                <th className="bg-orange-600 text-white">Payment</th>
+                <th className="bg-orange-600 text-white">Action</th>
               </tr>
             </thead>
             <tbody className="text-xl">
@@ -44,6 +46,21 @@ const BookingClass = () => {
                   <td>{cls.className}</td>
                   <td> $ {cls.price}</td>
                   <td>{cls.instructorEmail}</td>
+                  <td>
+                    {" "}
+                    <Link
+                      to={`/dashboard/payment/${cls._id}`}
+                      className="btn btn-xs hover:bg-orange-800 px-8 w-fit bg-orange-600 text-white"
+                    >
+                      Pay
+                    </Link>
+                  </td>
+                  <td>
+                    {" "}
+                    <button className="btn btn-xs hover:bg-red-800 px-8 w-fit bg-red-600 text-white">
+                      delete
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>

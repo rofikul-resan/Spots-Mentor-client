@@ -9,18 +9,13 @@ const Payments = () => {
   const stripePromise = loadStripe(import.meta.env.VITE_PAY_KEY);
   return (
     <div>
-      <div>
+      <div className="min-h-screen mt-24 ">
         <h1 className="text-2xl font-bold text-center my-3 w-1/2 mx-auto pb-1 border-b border-orange-600">
           Total payment : {totalPrice.toFixed()}{" "}
         </h1>
         <Elements stripe={stripePromise}>
           <CheckOut price={totalPrice} bookingClass={bookingClass} />
         </Elements>
-      </div>
-      <div>
-        <h1 className="text-2xl font-bold text-center w-1/2 mx-auto mt-12 pb-1 border-b border-orange-600">
-          Your Payment History
-        </h1>
       </div>
     </div>
   );
