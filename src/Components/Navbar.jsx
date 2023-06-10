@@ -42,16 +42,18 @@ const Navbar = () => {
                 Classes
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                to={"/dashboard "}
-                className={({ isActive }) =>
-                  isActive ? "border-b border-orange-600" : ""
-                }
-              >
-                Dashboard
-              </NavLink>
-            </li>
+            {user && (
+              <li>
+                <NavLink
+                  to={"/dashboard "}
+                  className={({ isActive }) =>
+                    isActive ? "border-b border-orange-600" : ""
+                  }
+                >
+                  Dashboard
+                </NavLink>
+              </li>
+            )}
           </ul>
           <div className="order-1 md:order-1">
             {user ? (

@@ -7,9 +7,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../Hook/useAxiosSecure";
 import { Bars } from "react-loader-spinner";
+import useUserRoll from "../Hook/useUserRoll";
 AOS.init();
 const ClassCard = ({ classes }) => {
   const [loading, setLoading] = useState(false);
+  const { userRoll } = useUserRoll();
   const { axiosSecure } = useAxiosSecure();
   const { user } = useContext(AuthContext);
   const location = useLocation();
@@ -50,7 +52,12 @@ const ClassCard = ({ classes }) => {
   };
   return (
     <div data-aos="flip-left">
-      <div className="card bg-base-100 h-full shadow-xl duration-150 hover:-translate-y-3 overflow-hidden ">
+      <div
+        className={`card bg-base-100 h-full shadow-xl duration-150 hover:-translate-y-3 overflow-hidden ${
+          classes?.availableSeats - classes?.enrollStudentId?.length === 0 &&
+          "bg-red-500"
+        } `}
+      >
         {loading && (
           <div className="absolute inset-0 z-10 bg-black/50 grid place-items-center">
             <Bars
@@ -98,8 +105,14 @@ const ClassCard = ({ classes }) => {
             <p>{moment(classes?.postTime).fromNow()}</p>
             <div className="card-actions justify-end">
               <button
+                disabled={
+                  classes?.availableSeats - classes?.enrollStudentId?.length ===
+                    0 ||
+                  userRoll.roll === "admin" ||
+                  userRoll.roll === "instructor"
+                }
                 onClick={handleBooking}
-                className="btn btn-gardant-s text-white rounded-sm"
+                className="btn btn-gardant-s text-white rounded-sm disabled:opacity-30 disabled:text-black"
               >
                 Book Now
               </button>
