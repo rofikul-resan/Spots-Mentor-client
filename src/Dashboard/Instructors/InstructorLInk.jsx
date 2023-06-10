@@ -15,7 +15,7 @@ const InstructorLInk = () => {
       </li>
       <li className="text-white text-xl capitalize">
         <NavLink
-          to={"./My-class"}
+          to={"./my-class"}
           className={({ isActive }) => (isActive ? "text-orange-300" : " ")}
         >
           <FaLayerGroup />

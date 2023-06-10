@@ -16,6 +16,7 @@ import EnrollClass from "../Dashboard/Student/EnrollClass";
 import Error404 from "../Components/Error404";
 import SinglePayment from "../PaymentSingle/SinglePayment";
 import PaymentHistory from "../Dashboard/Student/PaymentHistory";
+import InstClass from "../Dashboard/Instructors/InstClass";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
       {
         path: "add-class",
         element: <AddClass />,
+      },
+      {
+        path: "my-class",
+        element: <InstClass />,
       },
       // Student Page route
       {
