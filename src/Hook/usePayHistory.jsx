@@ -3,20 +3,20 @@ import useAxiosSecure from "./useAxiosSecure";
 import { AuthContext } from "../Provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 
-const useEnrollClass = () => {
+const usePayHistory = () => {
   const { axiosSecure } = useAxiosSecure();
   const { user, loading } = useContext(AuthContext);
-  const { data: enrollClass = [], refetch } = useQuery({
-    queryKey: ["enroll", user?.email],
+  const { data: payHistory = [], refetch } = useQuery({
+    queryKey: ["payment-history", user?.email],
     enabled: !loading,
     queryFn: async () => {
       const res = await axiosSecure.get(
-        `http://localhost:5000/enroll/${user?.email}`
+        `http://localhost:5000/payment-history?email=${user?.email}`
       );
       return res.data;
     },
   });
-  return { enrollClass, refetch };
+  return { payHistory, refetch };
 };
 
-export default useEnrollClass;
+export default usePayHistory;

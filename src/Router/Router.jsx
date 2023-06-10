@@ -15,6 +15,7 @@ import Payments from "../Payment/Payments";
 import EnrollClass from "../Dashboard/Student/EnrollClass";
 import Error404 from "../Components/Error404";
 import SinglePayment from "../PaymentSingle/SinglePayment";
+import PaymentHistory from "../Dashboard/Student/PaymentHistory";
 
 const router = createBrowserRouter([
   {
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
       {
         path: "payment",
         element: <Payments />,
+      },
+      {
+        path: "payment-history",
+        element: <PaymentHistory />,
       },
       {
         path: "payment/:id",

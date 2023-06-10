@@ -31,7 +31,7 @@ const StudentLink = () => {
       </li>
       <li className="text-white text-xl capitalize">
         <NavLink
-          to={"./payment"}
+          to={"./payment-history"}
           className={({ isActive }) => (isActive ? "text-orange-300" : " ")}
         >
           <GiWallet />

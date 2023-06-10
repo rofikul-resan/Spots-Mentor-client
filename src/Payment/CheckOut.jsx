@@ -8,6 +8,7 @@ import useBookingList from "../Hook/useBookingList";
 import useEnrollClass from "../Hook/useEnrollClass";
 
 const CheckOut = ({ price, bookingClass }) => {
+  const [loading, setLoading] = useState(false);
   const [cardError, setCardError] = useState(null);
   const [clientSecret, setClientSecret] = useState("");
   const [transactionId, setTransactionId] = useState("");
@@ -28,6 +29,7 @@ const CheckOut = ({ price, bookingClass }) => {
     }
   }, [axiosSecure, price]);
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     if (!stripe || !elements) {
       return;
@@ -59,6 +61,8 @@ const CheckOut = ({ price, bookingClass }) => {
           },
         },
       });
+    setLoading(false);
+
     if (confirmError) {
       console.log(confirmError);
       return setCardError(confirmError.message);
@@ -126,7 +130,7 @@ const CheckOut = ({ price, bookingClass }) => {
           <button
             className="btn bg-orange-600 hover:bg-orange-800 text-white btn-sm px-5 mb-3"
             type="submit"
-            disabled={!stripe || !clientSecret}
+            disabled={!stripe || !clientSecret || loading}
           >
             Pay
           </button>

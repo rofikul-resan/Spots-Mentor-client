@@ -1,10 +1,35 @@
 import { Link } from "react-router-dom";
 import SectionHeader from "../../Components/SectionHeader";
 import useBookingList from "../../Hook/useBookingList";
+import useAxiosSecure from "../../Hook/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const BookingClass = () => {
-  const { bookingClass } = useBookingList();
+  const { bookingClass, refetch } = useBookingList();
   const totalPrice = bookingClass.reduce((sum, cls) => sum + +cls.price, 0);
+  const { axiosSecure } = useAxiosSecure();
+
+  const handleDelete = async (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const res = await axiosSecure.delete(
+          `http://localhost:5000/booking/${id}`
+        );
+        if (res.data.deletedCount > 0) {
+          Swal.fire("Deleted!", "Your file has been deleted.", "success");
+          refetch();
+        }
+      }
+    });
+  };
   return (
     <div className="mb-12">
       <SectionHeader title={"Your Booking Class"} />
@@ -57,7 +82,10 @@ const BookingClass = () => {
                   </td>
                   <td>
                     {" "}
-                    <button className="btn btn-xs hover:bg-red-800 px-8 w-fit bg-red-600 text-white">
+                    <button
+                      onClick={() => handleDelete(cls._id)}
+                      className="btn btn-xs hover:bg-red-800 px-8 w-fit bg-red-600 text-white"
+                    >
                       delete
                     </button>
                   </td>
