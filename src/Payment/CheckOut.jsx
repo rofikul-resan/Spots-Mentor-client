@@ -1,16 +1,14 @@
-import {
-  CardElement,
-  PaymentElement,
-  useElements,
-  useStripe,
-} from "@stripe/react-stripe-js";
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useContext, useEffect, useState } from "react";
 import useAxiosSecure from "../Hook/useAxiosSecure";
 import { AuthContext } from "../Provider/AuthProvider";
+import Swal from "sweetalert2";
+import moment from "moment";
 
 const CheckOut = ({ price, bookingClass }) => {
   const [cardError, setCardError] = useState(null);
   const [clientSecret, setClientSecret] = useState("");
+  const [transactionId, setTransactionId] = useState("");
   const stripe = useStripe();
   const elements = useElements();
   const { axiosSecure } = useAxiosSecure();
@@ -58,16 +56,46 @@ const CheckOut = ({ price, bookingClass }) => {
       });
     if (confirmError) {
       console.log(confirmError);
-      return setCardError(confirmError);
+      return setCardError(confirmError.message);
     }
     console.log(paymentIntent);
+
+    if (paymentIntent.status === "succeeded") {
+      setTransactionId(paymentIntent.id);
+      const paymentHistory = {
+        userName: user.displayName,
+        paymentTime: new Date().getTime(),
+        email: user.email,
+        amount: price,
+        quantity: bookingClass.length,
+        allBookingId: bookingClass.map((cls) => cls._id),
+        allClassNames: bookingClass.map((cls) => cls.className),
+        allClassId: bookingClass.map((cls) => cls.classId),
+        instructorEmails: bookingClass.map((cls) => cls.instructorEmail),
+      };
+      console.log(paymentHistory);
+      axiosSecure
+        .post("http://localhost:5000/payments", paymentHistory)
+        .then((res) => {
+          console.log(res.data);
+          if (res.data.insertedId) {
+            Swal.fire({
+              icon: "success",
+              title: "Payment successful",
+            });
+          }
+        });
+    }
   };
   return (
     <>
       <form
         onSubmit={handleSubmit}
-        className="w-6/12 mx-auto shadow-lg shadow-black/30 rounded-lg"
+        className="w-6/12 mx-auto shadow-lg shadow-black/30 rounded-lg bg-base-200"
       >
+        <h1 className="text-xl font-semibold text-center capitalize">
+          pay from strip
+        </h1>
         <CardElement
           options={{
             style: {
@@ -83,7 +111,7 @@ const CheckOut = ({ price, bookingClass }) => {
               },
             },
           }}
-          className="my-3 p-4"
+          className="my-3 p-4 "
         />
         <div className="w-fit mx-auto">
           <button
@@ -98,6 +126,12 @@ const CheckOut = ({ price, bookingClass }) => {
       {cardError && (
         <p className="text-2xl text-center font-semibold text-red-600 mt-3">
           {cardError}
+        </p>
+      )}
+      {transactionId && (
+        <p className="text-2xl text-center font-semibold text-orange-600 mt-3">
+          Last Transaction from :{" "}
+          <span className="font-bold">{transactionId}</span>
         </p>
       )}
     </>

@@ -52,7 +52,6 @@ const AddClass = () => {
         availableSeats: +availableSeats,
         classImg,
         postTime: +postTime,
-        enrollStudent: 0,
         enrollStudentId: [],
         status: "pending",
       };

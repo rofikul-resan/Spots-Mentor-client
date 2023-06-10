@@ -25,6 +25,7 @@ const ClassCard = ({ classes }) => {
       setLoading(true);
       const bookingData = {
         classId: classes._id,
+        selectTime: new Date().getTime(),
         className: classes.className,
         instructorEmail: classes.email,
         studentEmail: user.email,

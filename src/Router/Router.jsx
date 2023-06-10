@@ -12,6 +12,7 @@ import AllClassPage from "../Page/AllClassPage/AllClassPage";
 import ManageClass from "../Dashboard/Admin/ManageClass";
 import BookingClass from "../Dashboard/Student/BookingClass";
 import Payments from "../Payment/Payments";
+import EnrollClass from "../Dashboard/Student/EnrollClass";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path: "booking-class",
         element: <BookingClass />,
+      },
+      {
+        path: "enroll-class",
+        element: <EnrollClass />,
       },
       {
         path: "payment",

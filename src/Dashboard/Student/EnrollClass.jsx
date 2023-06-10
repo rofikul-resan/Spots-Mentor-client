@@ -1,30 +1,17 @@
-import { Link } from "react-router-dom";
 import SectionHeader from "../../Components/SectionHeader";
-import useBookingList from "../../Hook/useBookingList";
+import useEnrollClass from "../../Hook/useEnrollClass";
 
-const BookingClass = () => {
-  const { bookingClass } = useBookingList();
-  const totalPrice = bookingClass.reduce((sum, cls) => sum + +cls.price, 0);
+const EnrollClass = () => {
+  const { enrollClass } = useEnrollClass();
   return (
     <div className="mb-12">
-      <SectionHeader title={"Your Booking Class"} />
+      <SectionHeader title={"Your Enroll Class"} />
 
       <div>
         <div className="overflow-x-auto w-9/12 mx-auto rounded-md">
-          <div className="flex justify-between items-center">
-            <h1 className="text-xl font-bold my-3 ms-1">
-              Total Booking : {bookingClass.length}
-            </h1>
-            <h1 className="text-xl font-bold my-3 ms-1">
-              Total Price : $ {totalPrice}
-            </h1>
-            <Link
-              to={"/dashboard/payment"}
-              className="btn btn-xs hover:bg-orange-800 px-8 w-fit bg-orange-600 text-white"
-            >
-              Pay
-            </Link>
-          </div>
+          <h1 className="text-xl font-bold my-3 ms-1">
+            Total Enroll : {enrollClass.length}
+          </h1>
           <table className="table table-zebra rounded-md overflow-hidden">
             {/* head */}
             <thead>
@@ -37,7 +24,7 @@ const BookingClass = () => {
             </thead>
             <tbody className="text-xl">
               {/* row 1 */}
-              {bookingClass.map((cls, index) => (
+              {enrollClass.map((cls, index) => (
                 <tr key={cls._id}>
                   <th>{+index + 1}</th>
 
@@ -54,4 +41,4 @@ const BookingClass = () => {
   );
 };
 
-export default BookingClass;
+export default EnrollClass;
