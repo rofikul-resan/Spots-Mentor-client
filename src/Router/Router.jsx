@@ -13,6 +13,7 @@ import ManageClass from "../Dashboard/Admin/ManageClass";
 import BookingClass from "../Dashboard/Student/BookingClass";
 import Payments from "../Payment/Payments";
 import EnrollClass from "../Dashboard/Student/EnrollClass";
+import Error404 from "../Components/Error404";
 
 const router = createBrowserRouter([
   {
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
         element: <SingUp />,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <Error404 />,
   },
 ]);
 export default router;
