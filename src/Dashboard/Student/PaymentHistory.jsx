@@ -49,7 +49,10 @@ const PaymentHistory = () => {
                   <td>
                     {" "}
                     <div className="dropdown dropdown-end">
-                      <label tabIndex={0} className="btn m-1">
+                      <label
+                        tabIndex={0}
+                        className="btn bg-orange-600 hover:bg-orange-800 text-white m-1"
+                      >
                         See All Class
                       </label>
                       <ul

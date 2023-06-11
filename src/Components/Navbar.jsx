@@ -18,7 +18,11 @@ const Navbar = () => {
             <li>
               <NavLink
                 to={"/"}
-                className={({ isActive }) => (isActive ? "btn-active" : "")}
+                className={({ isActive }) =>
+                  isActive
+                    ? " bg-orange-600 btn hover:bg-orange-800 text-white btn-sm "
+                    : ""
+                }
               >
                 Home
               </NavLink>
@@ -27,7 +31,9 @@ const Navbar = () => {
               <NavLink
                 to={"/instructors"}
                 className={({ isActive }) =>
-                  isActive ? "border-b border-orange-600" : ""
+                  isActive
+                    ? "bg-orange-600 btn hover:bg-orange-800 text-white btn-sm"
+                    : ""
                 }
               >
                 Instructors
@@ -37,7 +43,7 @@ const Navbar = () => {
               <NavLink
                 to={"/class"}
                 className={({ isActive }) =>
-                  isActive ? "border-b border-orange-600" : ""
+                  isActive ? "bg-orange-600 hover:bg-orange-800 btn" : ""
                 }
               >
                 Classes
@@ -48,7 +54,7 @@ const Navbar = () => {
                 <NavLink
                   to={"/dashboard "}
                   className={({ isActive }) =>
-                    isActive ? "border-b border-orange-600" : ""
+                    isActive ? "bg-orange-600 hover:bg-orange-800 btn" : ""
                   }
                 >
                   Dashboard

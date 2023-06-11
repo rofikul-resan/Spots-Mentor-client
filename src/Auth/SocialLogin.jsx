@@ -1,11 +1,11 @@
 import axios from "axios";
 import { useContext } from "react";
-import { BsFacebook, BsGithub, BsGoogle } from "react-icons/bs";
+import { BsGoogle } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const SocialLogin = () => {
-  const { googleLogin, facebookLogin } = useContext(AuthContext);
+  const { googleLogin } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleGoogleLogin = () => {
     googleLogin()
