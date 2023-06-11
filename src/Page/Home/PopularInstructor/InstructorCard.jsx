@@ -4,7 +4,7 @@ Aos.init();
 const InstructorCard = ({ instructor }) => {
   return (
     <div data-aos="flip-left">
-      <div className="card bg-base-100 h-full shadow-xl">
+      <div className="card bg-base-100 h-full glass shadow-xl">
         <figure className="h-64 overflow-hidden">
           <img
             src={instructor?.photo}
