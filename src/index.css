@@ -21,3 +21,11 @@
   background: -webkit-linear-gradient(#23074d #cc5333);
   background: linear-gradient(#23074d #cc5333);
 }
+
+.react-toggle-thumb {
+  @apply scale-125;
+}
+
+.menu li {
+  @apply hover:translate-x-2 duration-300;
+}

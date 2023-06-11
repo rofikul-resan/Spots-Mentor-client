@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
+import ThemeToggler from "./ThemeToggler";
 
 const Navbar = () => {
   const location = useLocation();
@@ -55,7 +56,8 @@ const Navbar = () => {
               </li>
             )}
           </ul>
-          <div className="order-1 md:order-1">
+          <div className="order-1 md:order-1 flex gap-2 items-center ">
+            <ThemeToggler />
             {user ? (
               <>
                 <div className="dropdown dropdown-end">
