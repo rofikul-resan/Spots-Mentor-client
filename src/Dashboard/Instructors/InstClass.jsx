@@ -13,15 +13,24 @@ const InstClass = () => {
       .get(`http://localhost:5000/inst-class?email=${user?.email}`)
       .then((res) => setInstClass(res.data));
   }, [user, axiosSecure]);
+  const totalEnroll = instClass.reduce(
+    (sum, cls) => sum + +cls.enrollStudentId?.length,
+    0
+  );
   return (
     <div className="mb-12">
       <SectionHeader title={"Your Class Details"} />
 
       <div>
         <div className="overflow-x-auto px-5 mx-auto rounded-md">
-          <h1 className="text-xl font-bold my-3 ms-1">
-            Total Class : {instClass.length}
-          </h1>
+          <div className="flex justify-between px-6">
+            <h1 className="text-xl font-bold my-3 ms-1">
+              Total Class : {instClass.length}
+            </h1>
+            <h1 className="text-xl font-bold my-3 ms-1">
+              Total Enroll Student : {totalEnroll}
+            </h1>
+          </div>
           <table className="table table-zebra rounded-md overflow-hidden">
             {/* head */}
             <thead>
@@ -30,9 +39,10 @@ const InstClass = () => {
                 <th className="bg-orange-600 text-white">class Name</th>
                 <th className="bg-orange-600 text-white">Price</th>
                 <th className="bg-orange-600 text-white">Total Enroll</th>
+                <th className="bg-orange-600 text-white">Total Seat</th>
                 <th className="bg-orange-600 text-white">Status</th>
-                <th className="bg-orange-600 text-white">Feedback</th>
-                <th className="bg-orange-600 text-white">Action</th>
+                <th className="bg-orange-600 text-white w-56">Feedback</th>
+                <th className="bg-orange-600 text-white w-fit">Action</th>
               </tr>
             </thead>
             <tbody className="text-xl">
@@ -44,11 +54,15 @@ const InstClass = () => {
                   <td>{cls.className}</td>
                   <td> $ {cls.price}</td>
                   <td>{cls.enrollStudentId?.length}</td>
+                  <td>{cls.availableSeats}</td>
                   <td>{cls.status}</td>
                   <td>{cls.feedback}</td>
 
                   <td>
-                    <Link className="btn btn-xs btn-primary px-8 w-fit ">
+                    <Link
+                      to={`/dashboard/update-class/${cls._id}`}
+                      className="btn btn-xs btn-primary px-8 w-fit "
+                    >
                       update
                     </Link>
                   </td>

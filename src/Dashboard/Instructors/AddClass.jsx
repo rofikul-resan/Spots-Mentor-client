@@ -140,9 +140,7 @@ const AddClass = () => {
         <div className="flex gap-6">
           <div className="form-control w-full max-w-xs">
             <label className="label">
-              <span className="text-lg italic font-semibold">
-                Available seats
-              </span>
+              <span className="text-lg italic font-semibold">Total seats</span>
             </label>
             <input
               {...register("availableSeats", { required: true })}
