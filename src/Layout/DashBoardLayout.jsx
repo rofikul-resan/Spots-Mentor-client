@@ -34,6 +34,17 @@ const DashBoardLayout = () => {
           <h1 className="text-2xl font-bold">Sports-Mentor</h1>
         </div>
         <div className="mt-28 md:mt-6 mx-auto">
+          <div className="  mx-auto w-fit rounded-full ">
+            <img
+              src={userRoll?.photo}
+              alt={userRoll?.name}
+              className="w-32 rounded-full h-32 mx-auto border-4 border-white
+              "
+            />
+          </div>
+          <h1 className="font-semibold text-center text-2xl text-white my-3">
+            Name : <span>{userRoll?.name}</span>
+          </h1>
           <h3 className="text-white font-semibold text-xl text-center  uppercase">
             ----{`( ${roll} )`}----
           </h3>

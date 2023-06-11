@@ -56,7 +56,7 @@ const ClassCard = ({ classes }) => {
   return (
     <div data-aos="flip-left">
       <div
-        className={`card bg-base-100 h-full shadow-xl duration-150 hover:-translate-y-3 overflow-hidden ${
+        className={`card glass bg-base-100 h-full shadow-xl duration-150 hover:-translate-y-3 overflow-hidden ${
           classes?.availableSeats - classes?.enrollStudentId?.length === 0 &&
           "bg-red-500"
         } `}
@@ -104,8 +104,7 @@ const ClassCard = ({ classes }) => {
               {classes?.availableSeats - classes?.enrollStudentId?.length}{" "}
             </p>
           </div>
-          <div className="flex items-center">
-            <p>{moment(classes?.postTime).fromNow()}</p>
+          <div className="mb-3">
             <div className="card-actions justify-end">
               <button
                 disabled={
@@ -120,6 +119,10 @@ const ClassCard = ({ classes }) => {
                 Book Now
               </button>
             </div>
+          </div>
+          <div className="absolute inset-x-0 bg-orange-500/40 py-1 bottom-0 text-center font-semibold">
+            {" "}
+            <p>{moment(classes?.postTime).fromNow()}</p>
           </div>
         </div>
       </div>
