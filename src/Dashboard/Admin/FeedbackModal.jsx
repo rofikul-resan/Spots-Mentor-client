@@ -8,7 +8,7 @@ const FeedbackModal = ({ feedbackId }) => {
     const feedbackText = event.target.feedback.value;
     console.log(feedbackText);
     axiosSecure
-      .patch(` http://localhost:5000/feedback/class/${feedbackId}`, {
+      .patch(`http://localhost:5000/feedback/class/${feedbackId}`, {
         feedbackText,
       })
       .then((res) => {

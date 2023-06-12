@@ -14,7 +14,7 @@ const SocialLogin = () => {
         console.log(user);
         navigate("/");
         axios
-          .post(" http://localhost:5000/add-users", {
+          .post("http://localhost:5000/add-users", {
             name: user.displayName,
             email: user.email,
             photo: user.photoURL,

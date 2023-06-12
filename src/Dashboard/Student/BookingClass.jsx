@@ -21,7 +21,7 @@ const BookingClass = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         const res = await axiosSecure.delete(
-          ` http://localhost:5000 /booking/${id}`
+          `http://localhost:5000/booking/${id}`
         );
         if (res.data.deletedCount > 0) {
           Swal.fire("Deleted!", "Your file has been deleted.", "success");

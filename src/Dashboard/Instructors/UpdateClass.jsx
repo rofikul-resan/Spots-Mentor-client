@@ -13,7 +13,7 @@ const UpdateClass = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axiosSecure.get(` http://localhost:5000/all-class/${id}`).then((res) => {
+    axiosSecure.get(`http://localhost:5000/all-class/${id}`).then((res) => {
       console.log(res.data);
       setCls(res.data);
     });
