@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .nav-link {
-  @apply flex flex-col md:flex-row md:items-center gap-2 justify-end px-4 md:px-0;
+  @apply flex-col md:flex-row md:items-center gap-2 justify-end px-4 md:px-0;
 }
 
 .nav-link li a {

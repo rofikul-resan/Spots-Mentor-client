@@ -1,10 +1,12 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import ThemeToggler from "./ThemeToggler";
+import { Divide as Hamburger } from "hamburger-react";
 
 const Navbar = () => {
   const location = useLocation();
+  const [navShow, setNavShow] = useState(false);
   const { user, logout } = useContext(AuthContext);
   return (
     <nav className=" shadow-md py-4">
@@ -13,8 +15,12 @@ const Navbar = () => {
           <img src="/logo.jpg" alt="" className="w-12 mx-auto" />
           <h1 className="text-2xl font-bold">Sports-Mentor</h1>
         </div>
-        <div className="flex ">
-          <ul className="nav-link mr-3 absolute md:static w-full md:w-fit left-0 top-[95px] bg-base-300 md:bg-transparent z-10 py-5 md:py-0  ">
+        <div className={`flex `}>
+          <ul
+            className={`nav-link mr-3 absolute md:static w-full md:w-fit left-0 top-[95px] bg-base-300 md:bg-transparent z-10 py-5 md:py-0 ${
+              navShow ? "hidden md:flex" : "flex"
+            } `}
+          >
             <li>
               <NavLink
                 to={"/"}
@@ -112,6 +118,11 @@ const Navbar = () => {
                 )}
               </div>
             )}
+          </div>
+          <div className="md:hidden">
+            <button onClick={() => setNavShow(!navShow)}>
+              <Hamburger toggled={!navShow} />
+            </button>
           </div>
         </div>
       </div>

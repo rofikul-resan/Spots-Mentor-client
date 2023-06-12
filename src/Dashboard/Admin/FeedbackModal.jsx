@@ -12,7 +12,6 @@ const FeedbackModal = ({ feedbackId }) => {
         feedbackText,
       })
       .then((res) => {
-        console.log(res.data);
         if (res.data.modifiedCount > 0) {
           event.target.reset();
           window.feedback_modal.close();

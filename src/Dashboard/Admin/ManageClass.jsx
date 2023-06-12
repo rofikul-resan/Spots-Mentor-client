@@ -12,12 +12,11 @@ const ManageClass = () => {
 
   const changeStatus = async (status, id) => {
     const res = await axiosSecure.patch(
-      ` http://localhost:5000 /class-status/${id}`,
+      `http://localhost:5000/class-status/${id}`,
       {
         status: status,
       }
     );
-    event;
     console.log(res.data);
     if (res.data.modifiedCount > 0) {
       refetch();

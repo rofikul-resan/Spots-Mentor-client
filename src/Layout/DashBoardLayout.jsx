@@ -8,7 +8,6 @@ import StudentLink from "../Dashboard/Student/StudentLink";
 
 const DashBoardLayout = () => {
   const { userRoll } = useUserRoll();
-  console.log(userRoll);
   const roll = userRoll.roll;
   return (
     <div className="drawer lg:drawer-open">
@@ -20,14 +19,14 @@ const DashBoardLayout = () => {
             htmlFor="my-drawer-2"
             className="btn btn-primary drawer-button lg:hidden w-full"
           >
-            Open drawer
+            Open Menu
           </label>
         </div>
         <div>
           <Outlet />
         </div>
       </div>
-      <div className="drawer-side bg-base-300" data-theme="dark">
+      <div className="drawer-side bg-base-300 z-20" data-theme="dark">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <div className=" text-center my-10 mx-auto">
           <img src="/logo.jpg" alt="" className="w-12 mx-auto" />
