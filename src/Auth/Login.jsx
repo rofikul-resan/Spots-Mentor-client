@@ -96,7 +96,7 @@ const Login = () => {
           <input
             {...register("password", {
               required: true,
-              // validate: validatePassword,
+              validate: validatePassword,
             })}
             type={isShow ? "text" : "password"}
             placeholder="Your Password"

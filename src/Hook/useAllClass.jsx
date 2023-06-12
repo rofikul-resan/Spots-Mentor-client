@@ -6,7 +6,9 @@ const useAllClass = () => {
   const { data: allClass = [], refetch } = useQuery({
     queryKey: ["instructor"],
     queryFn: async () => {
-      const res = await axiosSecure.get("http://localhost:5000/all-class");
+      const res = await axiosSecure.get(
+        "https://sports-mentor-server.vercel.app/all-class"
+      );
       return res.data;
     },
   });

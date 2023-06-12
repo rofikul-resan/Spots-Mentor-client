@@ -12,7 +12,9 @@ const SinglePayment = () => {
   const stripePromise = loadStripe(import.meta.env.VITE_PAY_KEY);
   useEffect(() => {
     axiosSecure
-      .get(`http://localhost:5000/payment/booking/${params.id}`)
+      .get(
+        `https://sports-mentor-server.vercel.app/payment/booking/${params.id}`
+      )
       .then((res) => {
         setProduct(res.data);
         console.log(res.data);

@@ -7,9 +7,12 @@ const ManageUser = () => {
   const { users, refetch } = useUser();
 
   const changeRoll = async (roll, id) => {
-    const res = await axios.patch(`http://localhost:5000/users/${id}`, {
-      roll: roll,
-    });
+    const res = await axios.patch(
+      `https://sports-mentor-server.vercel.app/users/${id}`,
+      {
+        roll: roll,
+      }
+    );
     if (res.data.modifiedCount > 0) {
       refetch();
       Swal.fire({

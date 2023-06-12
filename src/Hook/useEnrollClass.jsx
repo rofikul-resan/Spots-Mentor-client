@@ -11,7 +11,7 @@ const useEnrollClass = () => {
     enabled: !loading,
     queryFn: async () => {
       const res = await axiosSecure.get(
-        `http://localhost:5000/enroll/${user?.email}`
+        `https://sports-mentor-server.vercel.app/enroll/${user?.email}`
       );
       return res.data;
     },

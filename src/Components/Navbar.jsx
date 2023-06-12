@@ -6,7 +6,7 @@ import { Divide as Hamburger } from "hamburger-react";
 
 const Navbar = () => {
   const location = useLocation();
-  const [navShow, setNavShow] = useState(false);
+  const [navShow, setNavShow] = useState(true);
   const { user, logout } = useContext(AuthContext);
   return (
     <nav className=" shadow-md py-4">

@@ -12,7 +12,7 @@ const ManageClass = () => {
 
   const changeStatus = async (status, id) => {
     const res = await axiosSecure.patch(
-      `http://localhost:5000/class-status/${id}`,
+      `https://sports-mentor-server.vercel.app/class-status/${id}`,
       {
         status: status,
       }

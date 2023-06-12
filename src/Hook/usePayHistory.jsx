@@ -11,7 +11,7 @@ const usePayHistory = () => {
     enabled: !loading,
     queryFn: async () => {
       const res = await axiosSecure.get(
-        `http://localhost:5000/payment-history?email=${user?.email}`
+        `https://sports-mentor-server.vercel.app/payment-history?email=${user?.email}`
       );
       return res.data;
     },

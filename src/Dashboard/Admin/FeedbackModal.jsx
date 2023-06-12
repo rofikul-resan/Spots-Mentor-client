@@ -8,9 +8,12 @@ const FeedbackModal = ({ feedbackId }) => {
     const feedbackText = event.target.feedback.value;
     console.log(feedbackText);
     axiosSecure
-      .patch(`http://localhost:5000/feedback/class/${feedbackId}`, {
-        feedbackText,
-      })
+      .patch(
+        `https://sports-mentor-server.vercel.app/feedback/class/${feedbackId}`,
+        {
+          feedbackText,
+        }
+      )
       .then((res) => {
         if (res.data.modifiedCount > 0) {
           event.target.reset();

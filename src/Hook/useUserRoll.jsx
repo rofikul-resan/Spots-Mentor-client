@@ -11,7 +11,7 @@ const useUserRoll = () => {
     enabled: !loading,
     queryFn: async () => {
       const res = await axiosSecure.get(
-        `http://localhost:5000/users?email=${user?.email}`
+        `https://sports-mentor-server.vercel.app/users?email=${user?.email}`
       );
       return res.data;
     },

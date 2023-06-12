@@ -10,7 +10,9 @@ const InstClass = () => {
   const { axiosSecure } = useAxiosSecure();
   useEffect(() => {
     axiosSecure
-      .get(`http://localhost:5000/inst-class?email=${user?.email}`)
+      .get(
+        `https://sports-mentor-server.vercel.app/inst-class?email=${user?.email}`
+      )
       .then((res) => setInstClass(res.data));
   }, [user, axiosSecure]);
   const totalEnroll = instClass.reduce(

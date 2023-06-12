@@ -50,7 +50,7 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       if (currentUser) {
         console.log(currentUser);
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://sports-mentor-server.vercel.app/jwt", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

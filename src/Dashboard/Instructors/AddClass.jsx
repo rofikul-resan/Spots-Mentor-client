@@ -56,7 +56,7 @@ const AddClass = () => {
         status: "pending",
       };
       axiosSecure
-        .post("http://localhost:5000/add-class", classData)
+        .post("https://sports-mentor-server.vercel.app/add-class", classData)
         .then((res) => {
           console.log(res.data);
           if (res.data.result.insertedId) {

@@ -7,7 +7,7 @@ const PopularClassHome = () => {
   const [popularClass, setPopularClass] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/top-class")
+      .get("https://sports-mentor-server.vercel.app/top-class")
       .then((res) => setPopularClass(res.data));
   }, []);
 

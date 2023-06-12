@@ -7,7 +7,7 @@ const PopularInstructor = () => {
   const [popularInstructors, setPopularInstructor] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/popular-instructor")
+      .get("https://sports-mentor-server.vercel.app/popular-instructor")
       .then((res) => setPopularInstructor(res.data));
   }, []);
   return (

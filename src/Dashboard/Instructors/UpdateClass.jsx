@@ -13,10 +13,12 @@ const UpdateClass = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axiosSecure.get(`http://localhost:5000/all-class/${id}`).then((res) => {
-      console.log(res.data);
-      setCls(res.data);
-    });
+    axiosSecure
+      .get(`https://sports-mentor-server.vercel.app/all-class/${id}`)
+      .then((res) => {
+        console.log(res.data);
+        setCls(res.data);
+      });
   }, [axiosSecure, id]);
   const handleUpdateClass = async (event) => {
     setLoading(true);
@@ -31,7 +33,7 @@ const UpdateClass = () => {
       availableSeats: +availableSeats,
     };
     const res = await axiosSecure.patch(
-      ` http://localhost:5000/all-class/${cls?._id}`,
+      ` https://sports-mentor-server.vercel.app/all-class/${cls?._id}`,
       updateDoc
     );
     setLoading(false);

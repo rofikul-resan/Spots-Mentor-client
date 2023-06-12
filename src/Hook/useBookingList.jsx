@@ -11,7 +11,7 @@ const useBookingList = () => {
     enabled: !loading,
     queryFn: async () => {
       const res = await axiosSecure.get(
-        `http://localhost:5000/booking/${user?.email}`
+        `https://sports-mentor-server.vercel.app/booking/${user?.email}`
       );
       return res.data;
     },
