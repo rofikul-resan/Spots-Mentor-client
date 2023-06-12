@@ -19,6 +19,8 @@ import PaymentHistory from "../Dashboard/Student/PaymentHistory";
 import InstClass from "../Dashboard/Instructors/InstClass";
 import UpdateClass from "../Dashboard/Instructors/UpdateClass";
 import PrivetRoute from "./PrivetRoute";
+import AdminRoute from "./AdminRoute";
+import InstructorRoute from "./InstructorRoute";
 
 const router = createBrowserRouter([
   {
@@ -49,29 +51,53 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashBoardLayout />,
+    element: (
+      <PrivetRoute>
+        <DashBoardLayout />
+      </PrivetRoute>
+    ),
     children: [
       // Admin Page route
       {
         path: "manage-user",
-        element: <ManageUser />,
+        element: (
+          <AdminRoute>
+            <ManageUser />
+          </AdminRoute>
+        ),
       },
       {
         path: "manage-class",
-        element: <ManageClass />,
+        element: (
+          <AdminRoute>
+            <ManageClass />
+          </AdminRoute>
+        ),
       },
       // InstructorPage route
       {
         path: "add-class",
-        element: <AddClass />,
+        element: (
+          <InstructorRoute>
+            <AddClass />
+          </InstructorRoute>
+        ),
       },
       {
         path: "update-class/:id",
-        element: <UpdateClass />,
+        element: (
+          <InstructorRoute>
+            <UpdateClass />
+          </InstructorRoute>
+        ),
       },
       {
         path: "my-class",
-        element: <InstClass />,
+        element: (
+          <InstructorRoute>
+            <InstClass />
+          </InstructorRoute>
+        ),
       },
       // Student Page route
       {

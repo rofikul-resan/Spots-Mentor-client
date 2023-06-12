@@ -21,6 +21,23 @@ const SingUp = () => {
     formState: { errors },
     reset,
   } = useForm();
+
+  const validatePassword = (value) => {
+    // Password validation logic
+    if (value.length < 6) {
+      return "Password must be at least 6 characters long";
+    }
+
+    if (!/[A-Z]/.test(value)) {
+      return "Password must contain at least one capital letter";
+    }
+
+    if (!/[!@#$%^&*(),.?":{}|<>]/.test(value)) {
+      return "Password must contain at least one special character";
+    }
+
+    return true;
+  };
   const validateFile = (file) => {
     console.log("file", file);
     if (!file) {
@@ -139,12 +156,20 @@ const SingUp = () => {
             <span className="text-lg font-semibold italic">Password</span>
           </label>
           <input
-            {...register("password", { required: true })}
+            {...register("password", {
+              required: true,
+              validate: validatePassword,
+            })}
             type={isShow ? "text" : "password"}
             placeholder="Your Password"
             className="input input-bordered"
           />
         </div>
+        {errors.password && (
+          <span className="text-red-600 font-semibold ml-3">
+            {errors.password.message}
+          </span>
+        )}
         <div className="form-control relative">
           <button
             type="button"
@@ -159,12 +184,20 @@ const SingUp = () => {
             </span>
           </label>
           <input
-            {...register("confirmPass", { required: true })}
+            {...register("confirmPass", {
+              required: true,
+              validate: validatePassword,
+            })}
             type={isShow ? "text" : "password"}
             placeholder="Confirm  Password"
             className="input input-bordered"
           />
         </div>
+        {errors.password && (
+          <span className="text-red-600 font-semibold ml-3">
+            {errors.password.message}
+          </span>
+        )}
 
         <div className="form-control">
           <label className="label">

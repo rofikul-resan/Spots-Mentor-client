@@ -9,7 +9,7 @@ const ThemeToggler = () => {
   }, [isLight]);
   return (
     <div>
-      <label className="swap swap-rotate">
+      <label className="swap swap-rotate" title="Toggle Theme">
         {/* this hidden checkbox controls the state */}
         <input onChange={() => setIsLight(!isLight)} type="checkbox" />
 

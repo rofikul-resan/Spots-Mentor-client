@@ -16,6 +16,23 @@ const Login = () => {
   const from = location?.state;
   console.log(from);
 
+  const validatePassword = (value) => {
+    // Password validation logic
+    if (value.length < 6) {
+      return "Password must be at least 6 characters long";
+    }
+
+    if (!/[A-Z]/.test(value)) {
+      return "Password must contain at least one capital letter";
+    }
+
+    if (!/[!@#$%^&*(),.?":{}|<>]/.test(value)) {
+      return "Password must contain at least one special character";
+    }
+
+    return true;
+  };
+
   const {
     register,
     handleSubmit,
@@ -77,12 +94,20 @@ const Login = () => {
             <span className="text-lg font-semibold italic">Password</span>
           </label>
           <input
-            {...register("password", { required: true })}
+            {...register("password", {
+              required: true,
+              // validate: validatePassword,
+            })}
             type={isShow ? "text" : "password"}
             placeholder="Your Password"
             className="input input-bordered"
           />
         </div>
+        {errors.password && (
+          <span className="text-red-600 font-semibold ml-4">
+            {errors.password.message}
+          </span>
+        )}
         <div className="form-control mt-1">
           <p className="link link-hover text-red-600 ">Forget Password</p>
         </div>
