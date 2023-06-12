@@ -5,10 +5,8 @@ const ThemeToggler = () => {
   const [isLight, setIsLight] = useState(true);
   useEffect(() => {
     const theme = `${isLight ? "light" : "dark"}`;
-    console.log(theme);
     document.querySelector("html").setAttribute("data-theme", theme);
   }, [isLight]);
-  console.log(isLight);
   return (
     <div>
       <label className="swap swap-rotate">

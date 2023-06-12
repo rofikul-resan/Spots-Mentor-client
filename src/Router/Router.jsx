@@ -18,6 +18,7 @@ import SinglePayment from "../PaymentSingle/SinglePayment";
 import PaymentHistory from "../Dashboard/Student/PaymentHistory";
 import InstClass from "../Dashboard/Instructors/InstClass";
 import UpdateClass from "../Dashboard/Instructors/UpdateClass";
+import PrivetRoute from "./PrivetRoute";
 
 const router = createBrowserRouter([
   {
@@ -30,11 +31,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/instructors",
-        element: <InstructorPage />,
+        element: (
+          <PrivetRoute>
+            <InstructorPage />
+          </PrivetRoute>
+        ),
       },
       {
         path: "/class",
-        element: <AllClassPage />,
+        element: (
+          <PrivetRoute>
+            <AllClassPage />,
+          </PrivetRoute>
+        ),
       },
     ],
   },

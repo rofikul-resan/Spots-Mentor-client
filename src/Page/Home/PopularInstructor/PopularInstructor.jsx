@@ -9,7 +9,7 @@ const PopularInstructor = () => {
     axios
       .get("http://localhost:5000/popular-instructor")
       .then((res) => setPopularInstructor(res.data));
-  });
+  }, []);
   return (
     <div>
       <SectionHeader title={"Our Popular Instructor"} />

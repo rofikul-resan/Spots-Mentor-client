@@ -14,7 +14,7 @@ const Navbar = () => {
           <h1 className="text-2xl font-bold">Sports-Mentor</h1>
         </div>
         <div className="flex ">
-          <ul className="nav-link absolute md:static w-full md:w-fit left-0 top-[95px] bg-base-300 md:bg-transparent z-10 py-5 md:py-0  ">
+          <ul className="nav-link mr-3 absolute md:static w-full md:w-fit left-0 top-[95px] bg-base-300 md:bg-transparent z-10 py-5 md:py-0  ">
             <li>
               <NavLink
                 to={"/"}
@@ -43,7 +43,9 @@ const Navbar = () => {
               <NavLink
                 to={"/class"}
                 className={({ isActive }) =>
-                  isActive ? "bg-orange-600 hover:bg-orange-800 btn" : ""
+                  isActive
+                    ? "bg-orange-600 hover:bg-orange-800 btn-sm text-white btn"
+                    : ""
                 }
               >
                 Classes
@@ -54,7 +56,9 @@ const Navbar = () => {
                 <NavLink
                   to={"/dashboard "}
                   className={({ isActive }) =>
-                    isActive ? "bg-orange-600 hover:bg-orange-800 btn" : ""
+                    isActive
+                      ? "bg-orange-600 hover:bg-orange-800 btn-sm text-white btn"
+                      : ""
                   }
                 >
                   Dashboard
