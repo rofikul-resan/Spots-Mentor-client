@@ -21,6 +21,7 @@ import UpdateClass from "../Dashboard/Instructors/UpdateClass";
 import PrivetRoute from "./PrivetRoute";
 import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
+import DashboardHome from "../Dashboard/DashboardHome";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
       </PrivetRoute>
     ),
     children: [
+      {
+        path: "/dashboard",
+        element: <DashboardHome />,
+      },
       // Admin Page route
       {
         path: "manage-user",
