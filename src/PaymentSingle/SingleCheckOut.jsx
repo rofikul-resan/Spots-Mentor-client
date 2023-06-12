@@ -21,7 +21,9 @@ const SingleCheckOut = ({ price, product }) => {
   useEffect(() => {
     if (price > 0) {
       axiosSecure
-        .post("http://localhost:5000/create-payment-intent", { price })
+        .post(" http://localhost:5000 /create-payment-intent", {
+          price,
+        })
         .then((res) => {
           setClientSecret(res.data.clientSecret);
         });
@@ -80,7 +82,7 @@ const SingleCheckOut = ({ price, product }) => {
       };
       console.log(paymentHistory);
       axiosSecure
-        .post("http://localhost:5000/payments", paymentHistory)
+        .post(" http://localhost:5000 /payments", paymentHistory)
         .then((res) => {
           console.log(res.data);
           if (res.data.insertedId) {

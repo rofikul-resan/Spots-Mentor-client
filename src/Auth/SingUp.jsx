@@ -74,7 +74,7 @@ const SingUp = () => {
               updateUser(name, image)
                 .then(async () => {
                   const res = await axios.post(
-                    "http://localhost:5000/add-users",
+                    " http://localhost:5000/add-users",
                     {
                       name: name,
                       email: email,

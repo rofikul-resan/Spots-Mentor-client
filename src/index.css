@@ -7,7 +7,7 @@
 }
 
 .nav-link li a {
-  @apply uppercase font-semibold   justify-start md:justify-center;
+  @apply uppercase font-semibold  btn-block justify-start md:justify-center;
 }
 .btn-gardant-s {
   border: 0;

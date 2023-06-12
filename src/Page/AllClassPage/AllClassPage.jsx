@@ -7,7 +7,7 @@ const AllClassPage = () => {
   return (
     <div>
       <SectionHeader title={"See Our All Class"} />
-      <div className="grid grid-cols-3 gap-6 w-10/12 mx-auto">
+      <div className="grid md:grid-cols-3 gap-6 w-10/12 mx-auto">
         {allClass.map((cls) => (
           <ClassCard key={cls._id} classes={cls} />
         ))}

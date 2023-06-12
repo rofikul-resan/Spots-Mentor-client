@@ -13,7 +13,7 @@ const PopularInstructor = () => {
   return (
     <div>
       <SectionHeader title={"Our Popular Instructor"} />
-      <div className="grid grid-cols-3 gap-6 md:w-10/12 mx-auto p-6">
+      <div className="grid md:grid-cols-3 gap-6 md:w-10/12 mx-auto p-6">
         {popularInstructors.map((instructor) => (
           <InstructorCard key={instructor._id} instructor={instructor} />
         ))}

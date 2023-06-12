@@ -45,7 +45,7 @@ const HomeBanner = () => {
                       Welcome to <br /> Our Summer Camp <br /> Sports Course
                     </h1>
                   </Fade>
-                  <p className="text-sm text-white w-2/6 mt-4">
+                  <p className="text-sm text-white md:w-2/6 mt-4">
                     Explore Camps at the Institute of Science give inquisitive
                     campers the chance to collaboratively tackle activities,
                     experiments, and investigations in a unique and safe

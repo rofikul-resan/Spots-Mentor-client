@@ -7,7 +7,7 @@ const InstructorPage = () => {
   return (
     <div>
       <SectionHeader title={"Meet Our All Instructor"} />
-      <div className="grid grid-cols-3 gap-6 w-10/12 mx-auto">
+      <div className="grid md:grid-cols-3 gap-6 w-10/12 mx-auto">
         {instructor.map((ins) => (
           <InstructorCard key={ins._id} instructor={ins} />
         ))}

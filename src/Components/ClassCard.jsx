@@ -36,7 +36,7 @@ const ClassCard = ({ classes }) => {
         price: classes.price,
       };
       const res = await axiosSecure.post(
-        "http://localhost:5000/booking",
+        " http://localhost:5000 /booking",
         bookingData
       );
       setLoading(false);

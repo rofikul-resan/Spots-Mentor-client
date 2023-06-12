@@ -8,10 +8,13 @@ const FeedbackModal = ({ feedbackId }) => {
     const feedbackText = event.target.feedback.value;
     console.log(feedbackText);
     axiosSecure
-      .patch(`http://localhost:5000/feedback/class/${feedbackId}`)
+      .patch(` http://localhost:5000/feedback/class/${feedbackId}`, {
+        feedbackText,
+      })
       .then((res) => {
         console.log(res.data);
         if (res.data.modifiedCount > 0) {
+          event.target.reset();
           window.feedback_modal.close();
           Swal.fire({
             icon: "success",

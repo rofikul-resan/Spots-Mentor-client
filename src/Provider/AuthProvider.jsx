@@ -10,7 +10,6 @@ import {
 } from "firebase/auth";
 import firebaseApp from "../Firebase/firebase";
 import { createContext, useEffect, useState } from "react";
-import axios from "axios";
 
 export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
@@ -50,12 +49,21 @@ const AuthProvider = ({ children }) => {
       setInitLoading(false);
       setUser(currentUser);
       if (currentUser) {
-        const token = await axios.post("http://localhost:5000/jwt", {
-          email: currentUser.email,
-        });
-        if (token.data.token) {
-          localStorage.setItem("token", token.data.token);
-        }
+        console.log(currentUser);
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email: currentUser.email }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.token) {
+              console.log(data.token);
+              localStorage.setItem("token", data.token);
+            }
+          });
       } else {
         localStorage.removeItem("token");
       }

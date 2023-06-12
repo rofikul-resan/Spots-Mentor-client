@@ -56,7 +56,7 @@ const InstClass = () => {
                   <td>{cls.enrollStudentId?.length}</td>
                   <td>{cls.availableSeats}</td>
                   <td>{cls.status}</td>
-                  <td>{cls.feedback}</td>
+                  <td>{cls?.feedback?.feedbackText}</td>
 
                   <td>
                     <Link

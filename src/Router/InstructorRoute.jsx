@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 
 const InstructorRoute = ({ children }) => {
   const { userRoll } = useUserRoll();
-  if (userRoll.roll === "admin") {
+  if (userRoll.roll === "instructor") {
     return children;
   }
   return <Navigate to={"/"} />;
