@@ -13,7 +13,7 @@ const PopularClassHome = () => {
 
   return (
     <div>
-      <SectionHeader title={"Popular class"} />
+      <SectionHeader title={"Our Popular Class"} />
       <div className="md:w-10/12 mx-auto p-6">
         <div className="grid md:grid-cols-3 gap-6">
           {popularClass.map((classes) => (

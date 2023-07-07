@@ -54,7 +54,7 @@ const ClassCard = ({ classes }) => {
     }
   };
   return (
-    <div data-aos="flip-left">
+    <div data-aos="zoom-in">
       <div
         className={`card glass bg-base-100 h-full shadow-xl duration-150 hover:-translate-y-3 overflow-hidden ${
           classes?.availableSeats - classes?.enrollStudentId?.length === 0 &&
