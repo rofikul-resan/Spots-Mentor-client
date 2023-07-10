@@ -4,6 +4,7 @@ import ContactForm from "./ContactForm/ContactForm";
 import PhotoGallary from "./PhotoGallary";
 import PopularClassHome from "./PopularClass/PopularClassHome";
 import PopularInstructor from "./PopularInstructor/PopularInstructor";
+import ReviewSection from "./ReviewSection";
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <PhotoGallary />
       <PopularInstructor />
       <ContactForm />
+      <ReviewSection />
     </div>
   );
 };
